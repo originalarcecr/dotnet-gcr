@@ -13,7 +13,7 @@ builder.Services.AddScoped<IGeographyService, GeographyService>();
 
 var app = builder.Build();
 
-// app.Urls.Add("http://0.0.0.0:8080");
+app.Urls.Add("http://0.0.0.0:8080");
 
 app.MapGet("/", () => "Hello World!");
 
