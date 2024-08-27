@@ -23,6 +23,7 @@ public class GeographyService : IGeographyService
     {
         return await _context.Cantones
             .Where(c => c.ProvinciaId == int.Parse(provinciaId))
+            // .Include(c => c.Provincia)
             .ToListAsync();
     }
 
@@ -74,6 +75,34 @@ public class GeographyService : IGeographyService
                     await transaction.RollbackAsync();
                 }
             }
+        }
+    }
+
+     public async Task ImportCantonesFromJsonAsync(Stream fileStream)
+    {
+        using var reader = new StreamReader(fileStream);
+        var jsonString = await reader.ReadToEndAsync();
+        var cantones = JsonSerializer.Deserialize<List<Canton>>(jsonString);
+        
+        if (cantones != null)
+        {
+            foreach (var canton in cantones)
+            {
+                var existingCanton = await _context.Cantones
+                    .FirstOrDefaultAsync(c => c.Codigo == canton.Codigo);
+
+                if (existingCanton == null)
+                {
+                    await _context.Cantones.AddAsync(canton);
+                }
+                else
+                {
+                    existingCanton.Nombre = canton.Nombre;
+                    existingCanton.ProvinciaId = canton.ProvinciaId;
+                    _context.Cantones.Update(existingCanton);
+                }
+            }
+            await _context.SaveChangesAsync();
         }
     }
 }

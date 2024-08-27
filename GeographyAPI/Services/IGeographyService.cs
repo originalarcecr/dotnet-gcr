@@ -10,4 +10,5 @@ public interface IGeographyService
     Task<IEnumerable<Barrio>> GetBarriosAsync(string distritoId);
 
     Task ImportProvinciasFromJsonAsync(Stream fileStream);
+    Task ImportCantonesFromJsonAsync(Stream fileStream);
 }

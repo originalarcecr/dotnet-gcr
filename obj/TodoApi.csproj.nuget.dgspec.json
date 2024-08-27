@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Dylan\\Desktop\\Projects\\TodoApi\\TodoApi.csproj": {}
+    "C:\\Users\\Dylan\\Desktop\\Projects\\TodoApi\\TodoApi.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Dylan\\Desktop\\Projects\\TodoApi\\TodoApi.csproj": {
+    "C:\\Users\\Dylan\\Desktop\\Projects\\TodoApi\\TodoApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Dylan\\Desktop\\Projects\\TodoApi\\TodoApi.csproj",
+        "projectUniqueName": "C:\\Users\\Dylan\\Desktop\\Projects\\TodoApi\\TodoApi.csproj",
         "projectName": "TodoApi",
-        "projectPath": "c:\\Users\\Dylan\\Desktop\\Projects\\TodoApi\\TodoApi.csproj",
+        "projectPath": "C:\\Users\\Dylan\\Desktop\\Projects\\TodoApi\\TodoApi.csproj",
         "packagesPath": "C:\\Users\\Dylan\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Dylan\\Desktop\\Projects\\TodoApi\\obj\\",
+        "outputPath": "C:\\Users\\Dylan\\Desktop\\Projects\\TodoApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Dylan\\AppData\\Roaming\\NuGet\\NuGet.Config"

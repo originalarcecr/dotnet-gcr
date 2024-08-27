@@ -35,5 +35,23 @@ public static class GeographyEndpoints
                 return Results.Problem($"Error importing provincias: {ex.Message}", statusCode: 500);
             }
         });
+
+        app.MapPost("/import/cantones", async (HttpRequest request, IGeographyService service) =>
+        {
+            try
+            {
+                var file = request.Form.Files.GetFile("file");
+                if (file == null)
+                    return Results.BadRequest("No file uploaded");
+
+                using var stream = file.OpenReadStream();
+                await service.ImportCantonesFromJsonAsync(stream);
+                return Results.Ok("Cantones imported successfully");
+            }
+            catch (Exception ex)
+            {
+                return Results.BadRequest($"Error importing cantones: {ex.Message}");
+            }
+        });
     }
 }
