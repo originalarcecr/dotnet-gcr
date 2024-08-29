@@ -12,11 +12,15 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Provincia>().ToTable("Provincias");
+
         modelBuilder.Entity<Provincia>(entity =>
         {
             entity.HasKey(e => e.Id);
             entity.HasIndex(e => e.Codigo).IsUnique();
         });
+
+        modelBuilder.Entity<Canton>().ToTable("Cantones");
 
         modelBuilder.Entity<Canton>(entity =>
         {
@@ -27,6 +31,8 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
                   .HasForeignKey(c => c.ProvinciaId);
         });
 
+        modelBuilder.Entity<Distrito>().ToTable("Distritos");
+
         modelBuilder.Entity<Distrito>(entity =>
         {
             entity.HasKey(e => e.Id);
@@ -35,6 +41,8 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
                   .WithMany()
                   .HasForeignKey(d => d.CantonId);
         });
+
+        modelBuilder.Entity<Barrio>().ToTable("Barrios");
 
         modelBuilder.Entity<Barrio>(entity =>
         {
